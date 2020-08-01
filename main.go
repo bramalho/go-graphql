@@ -13,6 +13,7 @@ func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", handlers.Info).Methods("GET")
+	r.HandleFunc("/health", handlers.Health).Methods("GET")
 	r.HandleFunc("/graphql", handlers.GraphQL)
 
 	port := os.Getenv("APP_PORT")

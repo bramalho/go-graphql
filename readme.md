@@ -98,7 +98,7 @@ docker build -t bramalho/go-graphql -f .docker/prod/Dockerfile .
 Run Docker image
 
 ```bash
-docker run -p 80:80 --env APP_PORT=80 bramalho/go-graphql
+docker run -p 80:80 -e "DB_CONNECTION=mongodb://mongodb:27017" bramalho/go-graphql
 ```
 
 Publish Docker image
