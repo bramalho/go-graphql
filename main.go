@@ -15,9 +15,9 @@ func main() {
 	r.HandleFunc("/", handlers.Info).Methods("GET")
 	r.HandleFunc("/graphql", handlers.GraphQL)
 
-	port := os.Getenv("PORT")
+	port := os.Getenv("APP_PORT")
 	if port == "" {
-		port = "8000"
+		port = "80"
 	}
 
 	log.Println("Listning at http://localhost:" + port)
