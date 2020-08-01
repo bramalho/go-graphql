@@ -25,15 +25,15 @@ func init() {
 
 func setUpDB() {
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	clientOptions := options.Client().ApplyURI(os.Getenv("db_connection_string"))
+	clientOptions := options.Client().ApplyURI(os.Getenv("DB_CONNECTION"))
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	db = client.Database(os.Getenv("db_name"))
+	db = client.Database(os.Getenv("DB_NAME"))
 
-	log.Println("Database connected to " + os.Getenv("db_name"))
+	log.Println("Database connected to " + os.Getenv("DB_NAME"))
 }
 
 // GetDB instance
