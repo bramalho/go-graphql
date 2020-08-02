@@ -29,7 +29,7 @@ query {
 
 ### Create Category
 
-```grapqhl
+```graphql
 mutation {
     createCategory(
         name: "My Category"
