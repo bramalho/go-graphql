@@ -14,16 +14,65 @@ docker-compose up -d
 
 ## Queries
 
-### Get Products
+### Get Categories
 
 ```graphql
 query {
-    products {
+  	categories {
+    	id,
+        name,
+        description,
+        image,
+  	}
+}
+```
+
+### Create Category
+
+```grapqhl
+mutation {
+    createCategory(
+        name: "My Category"
+        description: "This is My Category",
+        image: ""
+    ) {
         id,
         name,
         description,
-        quantity,
-        status
+        image
+    }
+}
+```
+
+### Get Category
+
+```graphql
+query {
+    category(
+        id: "5f266c7d51744a3458fb1a9d"
+    ) {
+        id,
+        name,
+        description,
+        image
+    }
+}
+```
+
+### Update Category
+
+```graphql
+mutation {
+    updateCategory(
+        id: "5f266c7d51744a3458fb1a9d",
+        name: "My Category",
+        description: "This is My Category",
+        image: ""
+    ) {
+        id,
+        name,
+        description,
+        image
     }
 }
 ```

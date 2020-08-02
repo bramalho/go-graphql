@@ -14,8 +14,10 @@ func NewRoot() *Root {
 			graphql.ObjectConfig{
 				Name: "RootMutation",
 				Fields: graphql.Fields{
-					"createProduct": &CreateProductMutation,
-					"updateProduct": &UpdateProductMutation,
+					"createCategory": &CreateCategoryMutation,
+					"updateCategory": &UpdateCategoryMutation,
+					"createProduct":  &CreateProductMutation,
+					"updateProduct":  &UpdateProductMutation,
 				},
 			},
 		),

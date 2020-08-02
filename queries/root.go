@@ -16,8 +16,10 @@ func NewRoot() *Root {
 			graphql.ObjectConfig{
 				Name: "Query",
 				Fields: graphql.Fields{
-					"product":  &GetProductQuery,
-					"products": &GetProductsQuery,
+					"category":   &GetCategoryQuery,
+					"categories": &GetCategoriesQuery,
+					"product":    &GetProductQuery,
+					"products":   &GetProductsQuery,
 				},
 			},
 		),
