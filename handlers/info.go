@@ -22,7 +22,7 @@ var Info = func(w http.ResponseWriter, r *http.Request) {
 
 // Health for the services
 var Health = func(w http.ResponseWriter, r *http.Request) {
-	err := false
+	ok := true
 
 	db := models.GetDB()
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
@@ -30,14 +30,19 @@ var Health = func(w http.ResponseWriter, r *http.Request) {
 	dberr := db.Client().Ping(ctx, readpref.Primary())
 
 	if dberr != nil {
-		err = true
+		ok = false
+	}
+
+	message := "OK"
+	if ok == false {
+		message = "ERROR"
 	}
 
 	u.Respond(w, map[string]interface{}{
-		"status":  err,
-		"message": "Ok",
+		"status":  ok,
+		"message": message,
 		"services": map[string]interface{}{
-			"db": dberr != nil,
+			"db": dberr == nil,
 		},
 	})
 }
